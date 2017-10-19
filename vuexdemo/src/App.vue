@@ -1,45 +1,41 @@
 <template>
-  <div id="app">
-
-  </div>
+	<div id="app">
+		<!-- Count is {{$store.state.count}} -->
+		<!-- Count is {{count}}
+		<button @click="increment">+5</button>
+		<button @click="decrement">-3</button> -->
+		<router-link to="/hello">hello</router-link>
+		 <router-view></router-view>
+	</div>
 </template>
 
 <script>
-export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
-}
+	import {mapGetters,mapActions} from "vuex";
+	export default {
+		name: 'app',
+		data() {
+			return {
+				msg: 'Welcome to Your Vue.js App'
+			}
+		},
+		computed:{
+			...mapGetters([]),
+			count(){
+				return this.$store.state.count;
+			}
+		},
+		methods:{
+			...mapActions([
+				'increment',
+				'decrement'
+			])
+		}
+	}
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="less">
 
-h1, h2 {
-  font-weight: normal;
-}
+   #app{
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
+   }
 </style>
